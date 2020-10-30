@@ -48,7 +48,7 @@ expander_bar.markdown("""
 #expander_bar.markdown("""
 #* **Python libraries:** base64, pandas, streamlit, numpy, matplotlib, seaborn, BeautifulSoup, requests, json, time
 #* **Data source:** [CoinMarketCap](http://coinmarketcap.com).
-#* **Credit:** Web scraper adapted from the Medium article *[Web Scraping Crypto Prices With Python](https://towardsdatascience.com/web-scraping-crypto-prices-with-python-41072ea5b5bf)* written by [Bryan Feng](https://medium.com/@bryanf).
+
 #""")
 
 
@@ -181,3 +181,19 @@ else:
     plt.subplots_adjust(top = 1, bottom = 0)
     df_change['percent_change_1h'].plot(kind='barh', color=df_change.positive_percent_change_1h.map({True: 'g', False: 'r'}))
     col3.pyplot(plt)
+
+    # ---------------------------------#
+    # footer style
+
+    hide_footer_style = """
+    <style>
+    .reportview-container .main footer {visibility: hidden;}    
+    """
+    st.markdown(hide_footer_style, unsafe_allow_html=True)
+
+    hide_menu_style = """
+            <style>
+            #MainMenu {visibility: hidden;}
+            </style>
+            """
+    st.markdown(hide_menu_style, unsafe_allow_html=True)
