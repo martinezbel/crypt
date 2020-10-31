@@ -1,3 +1,5 @@
+# .    currently deployed in Streamlit Cloud   by Oscar Martinez
+
 import streamlit as st
 from PIL import Image
 import pandas as pd
@@ -8,7 +10,7 @@ import requests
 import json
 import time
 #---------------------------------#
-# New feature (make sure to upgrade your streamlit library)
+# New feature (make sure to upgrade  streamlit library)
 # pip install --upgrade streamlit
 
 #---------------------------------#
@@ -30,7 +32,7 @@ st.markdown(html_temp.format('green', 'white'), unsafe_allow_html=True)
 st.text("")
 st.text("""Created by Oscar Martinez (Python, Machine Learning, AI, DevOps) """)
 st.markdown("""
-This app retrieves cryptocurrency prices for the top 100 cryptocurrency from the **CoinMarketCap**!
+This app scrapes cryptocurrency prices for the top 100 cryptocurrency from the **CoinMarketCap**! The data are converted into data frames,sorted, analyzed, and presented in tables and charts. Technologies used are: Python, base64, pandas, streamlit, numpy, matplotlib, seaborn, BeautifulSoup, requests, json, time  
 """)
 
 
@@ -46,7 +48,7 @@ expander_bar.markdown("""
 # About
 #expander_bar = st.beta_expander("About")
 #expander_bar.markdown("""
-#* **Python libraries:** base64, pandas, streamlit, numpy, matplotlib, seaborn, BeautifulSoup, requests, json, time
+#* ** libraries:** base64, pandas, streamlit, numpy, matplotlib, seaborn, BeautifulSoup, requests, json, time
 #* **Data source:** [CoinMarketCap](http://coinmarketcap.com).
 
 #""")
@@ -57,6 +59,7 @@ expander_bar.markdown("""
 ## Divide page to 3 columns (col1 = sidebar, col2 and col3 = page contents)
 col1 = st.sidebar
 col2, col3 = st.beta_columns((2,1))
+
 
 #---------------------------------#
 # Sidebar + Main panel
@@ -146,7 +149,7 @@ col2.markdown(filedownload(df_selected_coin), unsafe_allow_html=True)
 
 #---------------------------------#
 # Preparing data for Bar plot of % Price change
-col2.subheader('Table of % Price Change')
+col2.subheader('Table of % price change according time passed ')
 df_change = pd.concat([df_coins.coin_symbol, df_coins.percent_change_1h, df_coins.percent_change_24h, df_coins.percent_change_7d], axis=1)
 df_change = df_change.set_index('coin_symbol')
 df_change['positive_percent_change_1h'] = df_change['percent_change_1h'] > 0
@@ -190,6 +193,8 @@ else:
     .reportview-container .main footer {visibility: hidden;}    
     """
     st.markdown(hide_footer_style, unsafe_allow_html=True)
+
+
 
     hide_menu_style = """
             <style>
